@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/anuragk02/course-selling-app/issues"
   },
-  "homepage": "https://github.com/anuragk02/course-selling-app#readme"
+  "homepage": "https://github.com/anuragk02/course-selling-app#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
