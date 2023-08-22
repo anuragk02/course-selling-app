@@ -22,7 +22,8 @@ const userAuth = (req, res, next) => {
     const { username, password } = req.headers
     const userFound = USERS.find(u => u.username === username)
     if(userFound && userFound.password === password) {
-        next()
+      req.user = userFound
+      next()
     } else {
       res.status(401).json({message: "User authentication failed."})
     }
@@ -62,7 +63,7 @@ app.post('/admin/courses', (req, res) => {
 app.put('/admin/courses/:courseId', (req, res) => {
   // logic to edit a course
   const updatedCourse = req.body
-  var courseIndex = COURSES.findIndex(c => c.id === erq.params.courseId)
+  var courseIndex = COURSES.findIndex(c => c.id === parseInt(req.params.courseId))
   if(courseIndex === -1) {
     res.status(404).json({message: "No such course"})
   } else {
@@ -97,13 +98,7 @@ app.post('/users/login', userAuth,(req, res) => {
 
 app.get('/users/courses', (req, res) => {
   // logic to list all courses
-  let filteredCourses = []
-  for(const course of COURSES) {
-    if(course.published) {
-        filteredCourses.push(course)
-    }
-  }
-  res.status(200).json({courses: filteredCourses})
+  res.status(200).json({ courses: COURSES.filter(c => c.published) })
 });
 
 app.post('/users/courses/:courseId', userAuth, (req, res) => {
