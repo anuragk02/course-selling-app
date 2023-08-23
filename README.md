@@ -1,5 +1,15 @@
-#Creating a course selling app that has 2 types of users, admins and regular users. Admins can create new courses, edit them, users can view all courses, buy a course and view purchased courses.
+# Course Selling Web App
 
-Data is stored in MongoDB cluster.
+## Functionalities Implemented
 
-Apart from the above functionalities, login and signup are also implemented. Authorization is done using JWTs.
+### Login & Signup using JWTs
+
+### Create, View and Edit courses (Admins)
+
+### View and Purchase courses (Users)
+
+### Routes require JWT Authentication seperate for Users and Admins
+
+## Future Plans
+
+### Working on a frontend next, to eventually make it live.
